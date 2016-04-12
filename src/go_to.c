@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Fri Apr  8 06:27:49 2016 Gaëtan Léandre
-** Last update Fri Apr  8 23:06:26 2016 Gaëtan Léandre
+** Last update Tue Apr 12 16:26:24 2016 Gaëtan Léandre
 */
 
 #include	"astar.h"
