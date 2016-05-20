@@ -5,14 +5,14 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Fri Apr  8 04:51:26 2016 Gaëtan Léandre
-** Last update Fri May 20 02:08:43 2016 Gaëtan Léandre
+** Last update Fri May 20 03:05:19 2016 Gaëtan Léandre
 */
 
 #ifndef			_A_STAR_H_
 # define		_A_STAR_H_
 
 # define		TRAVERS		0
-# define		ABS(x)		((x) < 0 ? (-x) : (x))
+# define		ABS(x)		((x) < 0 ? -(x) : (x))
 
 # include		<sys/types.h>
 # include		<sys/stat.h>
