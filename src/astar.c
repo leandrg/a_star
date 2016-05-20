@@ -40,7 +40,8 @@ t_depla		*a_star(char *obj, t_posi *size, t_posi *pos, t_posi *end)
     return (NULL);
   while (star.cur_x != pos->x || star.cur_y != pos->y)
     {
-    if (best_way(&star) == -1)
-      return (NULL);}
+      if (best_way(&star) == -1)
+	return (NULL);
+    }
   return (free_star(&star));
 }
