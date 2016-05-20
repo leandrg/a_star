@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Fri Apr  8 06:27:49 2016 Gaëtan Léandre
-** Last update Tue Apr 12 16:26:24 2016 Gaëtan Léandre
+** Last update Fri May 20 01:52:07 2016 Gaëtan Léandre
 */
 
 #include	"astar.h"
@@ -28,7 +28,7 @@ void		add_proc(t_star *star, int x, int y)
 	  if ((TRAVERS == 1 || (j == 0 || i == 0))
 	      && (tmp_x >= 0 && tmp_y >= 0
 		  && tmp_x < star->x && tmp_y < star->y)
-      	      && star->ind_list[tmp_x][tmp_y] >= 0)
+      	      && star->ind_list[tmp_x + star->x * tmp_y] >= 0)
 	    set_coef(star, tmp_x, tmp_y);
       	  j++;
       	}
@@ -43,24 +43,24 @@ int		caseProche(t_star *star)
   int		distance;
 
   distance = -1;
-  i = 0;
-  while (i < star->x)
+  i = -1;
+  while (++i < star->x)
     {
       j = 0;
       while (j < star->y)
 	{
-	  if ((star->open_list[i][j] <= distance || distance < 0)
-	      && star->open_list[i][j] > 0)
+	  if ((star->open_list[i + star->x * j] <= distance || distance < 0)
+	      && star->open_list[i + star->x * j] > 0)
 	    {
-	      distance = star->open_list[i][j];
+	      distance = star->open_list[i + star->x * j];
 	      star->cur_x = i;
 	      star->cur_y = j;
 	    }
 	  j++;
 	}
-      i++;
     }
-  star->open_list[star->cur_x][star->cur_y] = -1;
-  return (distance == -1 ? -1 : (star->ind_list[star->cur_x][star->cur_y]
+  star->open_list[star->cur_x + star->x * star->cur_y] = -1;
+  return (distance == -1 ? -1 : (star->ind_list[star->cur_x + star->x
+				 * star->cur_y]
   = calcul_indice(star, star->cur_x, star->cur_y) + 1));
 }

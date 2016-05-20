@@ -12,21 +12,12 @@
 
 t_depla		*free_star(t_star *star)
 {
-  int		i;
-
-  i = 0;
-  while (i < star->x)
-    {
-      free(star->ind_list[i]);
-      free(star->open_list[i]);
-      i++;
-    }
   free(star->ind_list);
   free(star->open_list);
   return (star->depla);
 }
 
-t_depla		*a_star(char **obj, t_posi *size, t_posi *pos, t_posi *end)
+t_depla		*a_star(char *obj, t_posi *size, t_posi *pos, t_posi *end)
 {
   t_star	star;
   int		cont;
@@ -37,8 +28,8 @@ t_depla		*a_star(char **obj, t_posi *size, t_posi *pos, t_posi *end)
   if (init_tab(&star) == -1)
     return (NULL);
   case_is_free(obj, &star);
-  star.open_list[pos->x][pos->y] = -1;
-  star.ind_list[pos->x][pos->y] = 1;
+  star.open_list[pos->x + size->x * pos->y] = -1;
+  star.ind_list[pos->x + size->x * pos->y] = 1;
   while ((star.cur_x != star.end_x || star.cur_y != star.end_y) && cont != -1)
     {
       add_proc(&star, star.cur_x, star.cur_y);

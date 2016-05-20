@@ -5,7 +5,7 @@
 ** Login   <leandr_g@epitech.eu>
 **
 ** Started on  Fri Apr  8 06:28:48 2016 Gaëtan Léandre
-** Last update Fri Apr  8 06:29:44 2016 Gaëtan Léandre
+** Last update Fri May 20 01:53:13 2016 Gaëtan Léandre
 */
 
 #include	"astar.h"
@@ -27,7 +27,7 @@ t_ind		take_way(t_star *star, int x, int y)
 {
   t_ind		indice;
 
-  indice.indice = star->ind_list[x][y];
+  indice.indice = star->ind_list[x + star->x * y];
   indice.x = x;
   indice.y = y;
   return (indice);
@@ -52,8 +52,8 @@ int		best_way(t_star *star)
 	  tmp_y = star->cur_y + j;
 	  if ((TRAVERS == 1 || (j == 0 || i == 0)) && (tmp_x >= 0 && tmp_y >= 0
 	       && tmp_x < star->x && tmp_y < star->y) && (j != 0 || i != 0)
-	      && star->ind_list[tmp_x][tmp_y] > 0
-	      && ind.indice > star->ind_list[tmp_x][tmp_y])
+	      && star->ind_list[tmp_x + star->x * tmp_y] > 0
+	      && ind.indice > star->ind_list[tmp_x + star->x * tmp_y])
 	    ind = take_way(star, tmp_x, tmp_y);
 	  j++;
 	}
